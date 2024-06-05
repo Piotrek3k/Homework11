@@ -53,13 +53,26 @@ const testCases = [
     {
         input: '{"escaped":"A string with escaped characters: \\" \\n \\t"}',
         expected: { escaped: "A string with escaped characters: \" \n \t" }
+    },
+    {
+        input: '{"invalid": "missing end quote}',
+        expectedError: true // This case is expected to throw an error
     }
 ];
 
 // Run test cases
 testCases.forEach((testCase, index) => {
-    const result = myJSONParse(testCase.input);
-    console.assert(JSON.stringify(result) === JSON.stringify(testCase.expected), `Test case ${index + 1} failed`);
+    try {
+        const result = myJSONParse(testCase.input);
+        if (testCase.expectedError) {
+            console.assert(false, `Test case ${index + 1} failed - expected an error but got a result`);
+        } else {
+            console.assert(JSON.stringify(result) === JSON.stringify(testCase.expected), `Test case ${index + 1} failed`);
+        }
+    } catch (error) {
+        if (!testCase.expectedError) {
+            console.assert(false, `Test case ${index + 1} failed - unexpected error: ${error.message}`);
+        }
+    }
 });
-
 console.log("All tests passed");
