@@ -132,7 +132,7 @@ const myJSONParse = (jsonString) => {
      */
     function tokenize(string) {
         // Regular expression to match JSON tokens
-        const tokenPattern = /(".*?(?<!\\)"|null|true|false|[{}\[\],:]|\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)/g;
+        const tokenPattern = /null|true|false|(".*?(?<!\\)"|[{}\[\],:]|\d+(?:\.\d+)?(?:[eE][+-]?\d+)?)/g;
         return string.match(tokenPattern); // Return an array of tokens
     }
 
