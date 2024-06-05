@@ -141,5 +141,3 @@ const myJSONParse = (jsonString) => {
 
 module.exports = myJSONParse
 
-console.log(myJSONParse('{"name":"John", "age":30, "isStudent":false}'));
-console.log(JSON.stringify(myJSONParse('{"title":"Example JSON","author":{"name":"Jane Doe","age":32,"isActive":true},"tags":["example","json","nested","array"],"details":{"published":"2024-06-03","likes":150,"comments":[{"user":"user1","comment":"Great post!","date":"2024-06-01"},{"user":"user2","comment":"Very informative.","date":"2024-06-02"}]}}')));
